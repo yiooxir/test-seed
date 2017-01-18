@@ -29,7 +29,8 @@ module.exports = {
         {
           enforce: 'pre',
           test: /\.ts$/,
-          loader: 'tslint',
+          /* for migration on webpack it's no more needed to use loader key. Please, see: https://webpack.js.org/guides/migrating/#module-loaders-is-now-module-rules */
+          use: 'tslint',
           exclude: [
             /node_modules/,
             /\.(spec|e2e)\.ts$/
@@ -42,7 +43,7 @@ module.exports = {
         },
         {
           test: /\.ts$/,
-          loader: 'awesome-typescript',
+          use: 'awesome-typescript',
           exclude: [ /\.(spec|e2e)\.ts$/ ]
         },
         {
@@ -51,25 +52,25 @@ module.exports = {
         },
         {
           test: /\.html$/,
-          loader: 'raw',
+          use: 'raw',
           exclude: [ helpers.root('src/index.html') ]
         },
         {
           test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-          loader: 'file?name=assets/[name].[hash].[ext]'
+          use: 'file?name=assets/[name].[hash].[ext]'
         },
         {
           test: /\.scss/,
-          loader: 'raw!postcss?sourceMap!sass?sourceMap',
+          use: 'raw!postcss?sourceMap!sass?sourceMap',
           include: helpers.root('src/app')
         },
         {
           test: /main\.scss/,
-          loader: 'style!css!postcss!sass'
+          use: 'style!css!postcss!sass'
         },
         {
           test: /\.css/,
-          loader: 'style!css!postcss'
+          use: 'style!css!postcss'
         }
       ],
       noParse: [
