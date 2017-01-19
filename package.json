@@ -19,6 +19,7 @@
     "watch": "npm run watch:local",
     "watch:local": "npm run build:local -- --watch",
     "build": "npm run build:local",
+    "build:vendor": "webpack --config config/vendor.webpack.conf.js --profile --colors --display-error-details --display-cached",
     "build:local": "webpack --config config/local.webpack.conf.js --profile --colors --display-error-details --display-cached",
     "server": "npm run server:local",
     "server:local": "webpack-dev-server --config config/local.webpack.conf.js --inline --progress --profile --watch  --content-base build/",
@@ -48,6 +49,7 @@
   "license": "ISC",
   "homepage": "https://github.com/aleksey-gonchar/plain-ts-webpack-seed#readme",
   "dependencies": {
+    "@types/async": "^2.0.38",
     "@types/browser-sync": "0.0.34",
     "@types/node": "*",
     "@types/rimraf": "0.0.28",
