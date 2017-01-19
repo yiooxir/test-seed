@@ -20,6 +20,7 @@
     "watch:local": "npm run build:local -- --watch",
     "build": "npm run build:local",
     "build:vendor": "webpack --config config/vendor.webpack.conf.js --profile --colors --display-error-details --display-cached",
+    "build:appdll": "webpack --config config/appdll.webpack.conf.js --profile --colors --display-error-details --display-cached",
     "build:local": "webpack --config config/local.webpack.conf.js --profile --colors --display-error-details --display-cached",
     "server": "npm run server:local",
     "server:local": "webpack-dev-server --config config/local.webpack.conf.js --inline --progress --profile --watch  --content-base build/",

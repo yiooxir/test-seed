@@ -1,0 +1,14 @@
+{
+  "name": "vendor",
+  "content": {
+    "./src/vendor/main.ts": {
+      "id": 0,
+      "meta": {
+        "harmonyModule": true
+      },
+      "exports": [
+        "myObj"
+      ]
+    }
+  }
+}
