@@ -5,8 +5,12 @@ module.exports = {
     app: './src/vendor/main.ts'
   },
   output: {
-    path: './build/libs',
-    filename: '/vendor.dll',
+    path: './src/libs',
+    filename: '/vendor.js',
+    // export itself to a global var
+    libraryTarget: "commonjs2",
+    // name of the global var: "Foo"
+    library: "vendor"
   },
   module: {
     loaders: [
