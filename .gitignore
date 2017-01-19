@@ -4,3 +4,4 @@ typings
 build/**/*.js
 build/**/*.map
 .idea
+public

@@ -30,7 +30,7 @@ module.exports = {
           enforce: 'pre',
           test: /\.ts$/,
           /* for migration on webpack it's no more needed to use loader key. Please, see: https://webpack.js.org/guides/migrating/#module-loaders-is-now-module-rules */
-          use: 'tslint',
+          use: 'tslint-loader',
           exclude: [
             /node_modules/,
             /\.(spec|e2e)\.ts$/
@@ -39,11 +39,11 @@ module.exports = {
         {
           enforce: 'pre',
           test: /\.js$/,
-          loader: 'source-map'
+          loader: 'source-map-loader'
         },
         {
           test: /\.ts$/,
-          use: 'awesome-typescript',
+          use: 'awesome-typescript-loader',
           exclude: [ /\.(spec|e2e)\.ts$/ ]
         },
         {
