@@ -5,7 +5,7 @@ module.exports = {
     app: './src/vendor/main.ts'
   },
   output: {
-    path: './public/cdn',
+    path: './build/cdn',
     filename: '/vendor.js',
     // libraryTarget: "commonjs2",
     library: "vendor"

@@ -5,7 +5,7 @@ module.exports = {
     app: './src/main.ts'
   },
   output: {
-    path: './static',
+    path: './build',
     filename: '/main.js',
   },
   externals: {

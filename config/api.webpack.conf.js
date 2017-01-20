@@ -5,7 +5,7 @@ module.exports = {
     app: './src/api/main.ts'
   },
   output: {
-    path: './public/cdn',
+    path: './build/cdn',
     filename: '/api.js',
     libraryTarget: 'umd',
     library: 'api',

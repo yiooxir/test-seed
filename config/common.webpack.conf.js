@@ -20,6 +20,7 @@ module.exports = {
     },
     output: {
       path: helpers.root('public'),
+      publicPath: '/public/',
       filename: '[name].js',
       sourceMapFilename: '[name].map',
       chunkFilename: '[id].chunk.js'
