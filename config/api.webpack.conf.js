@@ -2,13 +2,17 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: './src/vendor/main.ts'
+    app: './src/api/main.ts'
   },
   output: {
     path: './public/cdn',
-    filename: '/vendor.js',
-    // libraryTarget: "commonjs2",
-    library: "vendor"
+    filename: '/api.js',
+    libraryTarget: 'umd',
+    library: 'api',
+    umdNamedDefine: true
+  },
+  externals: {
+    vendor: "vendor",
   },
   module: {
     loaders: [
@@ -20,5 +24,9 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.js', '.ts']
+  },
+  devServer: {
+    historyApiFallback: true,
+    stats: 'minimal'
   }
 };

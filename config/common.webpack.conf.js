@@ -24,6 +24,10 @@ module.exports = {
       sourceMapFilename: '[name].map',
       chunkFilename: '[id].chunk.js'
     },
+    externals: {
+      vendor: 'vendor',
+      api: 'api'
+    },
     module: {
       rules: [
         {

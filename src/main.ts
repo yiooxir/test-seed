@@ -1,10 +1,13 @@
-// const _ = require('./vendor');
-// import vendor from './vendor/main';
-const vendor = require('./libs/vendor');
-// import vendor from './libs/vendor';
-// const test = require('./test');
-const lodash = require('lodash');
-// import { get } from 'lodash';
+/// <reference path="./ext.d.ts" />
 
-console.log(213123123123, vendor);
-console.log(11, lodash.get({a: 1}, 'a'), 33);
+const api = require('api');
+const _ = require('vendor').lodash;
+
+const $preApi = document.getElementById('pre_api');
+
+$preApi.innerText = api.test();
+
+const $preLodash = document.getElementById('pre_lodash');
+const arr = [1, 2, 3, 4, 5];
+
+$preLodash.innerText = _.reduce(arr, (a, b) => a + b);
