@@ -1,45 +1,23 @@
 const webpack = require('webpack');
+const ROOT_PATH = require('./helpers').ROOT;
+const path = require('path');
+const context = path.join(ROOT_PATH, 'src');
 
 module.exports = {
+  context,
+
   entry: {
-    vendor: ['./src/vendor/main.ts'],
+    vendor: ['async', 'lodash'],
   },
+
   output: {
-    filename: 'vendor.bundle.js',
-    path: 'build_test/',
-    library: 'vendor',
+    path: './build',
+    filename: '[name].dll',
+    library: '[name]_dll',
   },
+
   plugins: [new webpack.DllPlugin({
-    name: 'vendor',
-    path: 'build_test/vendor-manifest.json',
+    name: '[name]_dll',
+    path: './build/[name]-manifest.json',
   })]
 };
-
-// module.exports = {
-//   entry: {
-//     app: './src/vendor/main.ts'
-//   },
-//   output: {
-//     path: './src/libs',
-//     filename: '/vendor.js',
-//     // export itself to a global var
-//     libraryTarget: "commonjs2",
-//     // name of the global var: "Foo"
-//     library: "vendor"
-//   },
-//   module: {
-//     loaders: [
-//       { test: /\.ts$/, loaders: ['awesome-typescript-loader'] },
-//     ]
-//   },
-//   plugins: [
-//     new webpack.NoEmitOnErrorsPlugin(),
-//   ],
-//   resolve: {
-//     extensions: ['.js', '.ts']
-//   },
-//   devServer: {
-//     historyApiFallback: true,
-//     stats: 'minimal'
-//   }
-// };

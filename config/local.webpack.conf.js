@@ -1,15 +1,16 @@
 'use strict'
 const _ = require('lodash')
+const webpack = require('webpack')
 const autoprefixer = require('autoprefixer')
 const webpackMerge = require('webpack-merge')
 const DefinePlugin = require('webpack/lib/DefinePlugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin')
-
+const path = require('path')
 const helpers = require('./helpers')
-
 const config = require('./webpack.conf.js')
 
+const ROOT_PATH = process.cwd()
 const ENV = process.env.ENV = 'local'
 process.env.NODE_ENV = 'development'
 
@@ -24,11 +25,13 @@ module.exports = webpackMerge(config.data, {
     library: 'ac_[name]',
     libraryTarget: 'var',
   },
+
   plugins: [
     new CompressionPlugin({
       regExp: /\.css$|\.html$|\.js$|\.map$/,
       algorithm: 'gzip'
     }),
+
     new DefinePlugin({
       'ENV': JSON.stringify(METADATA.ENV),
       'HMR': METADATA.HMR,
@@ -39,6 +42,7 @@ module.exports = webpackMerge(config.data, {
         'HMR': METADATA.HMR,
       }
     }),
+
     new LoaderOptionsPlugin({
       debug: true,
       options: {
@@ -58,6 +62,11 @@ module.exports = webpackMerge(config.data, {
         },
         context: '/'
       }
+    }),
+
+    new webpack.DllReferencePlugin({
+      context: path.join(ROOT_PATH, 'src'),
+      manifest: require(path.join(ROOT_PATH, 'build/vendor-manifest.json')),
     })
   ]
-})
+});

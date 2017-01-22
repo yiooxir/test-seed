@@ -1,3 +1,3 @@
-const me = require('vendor');
+const _ = require('lodash');
 
-console.log(12345, me);
+console.log(12345, _);
