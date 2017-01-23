@@ -1,7 +1,9 @@
 node_modules
 *.log
 typings
-build/**/*.js
-build/**/*.map
+build/**/*
+!build/index.html
+#build/**/*.map
+
 .idea
 public

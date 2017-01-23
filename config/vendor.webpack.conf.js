@@ -1,11 +1,9 @@
 const webpack = require('webpack');
-const ROOT_PATH = require('./helpers').ROOT;
-const path = require('path');
-const context = path.join(ROOT_PATH, 'src');
+const helpers = require('./helpers');
+const context = helpers.root('src');
 
 module.exports = {
   context,
-
   entry: {
     vendor: ['async', 'lodash'],
   },
