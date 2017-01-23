@@ -1,4 +1,14 @@
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("vendor_dll"));
+	else if(typeof define === 'function' && define.amd)
+		define(["vendor_dll"], factory);
+	else if(typeof exports === 'object')
+		exports["api"] = factory(require("vendor_dll"));
+	else
+		root["api"] = factory(root["vendor_dll"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
@@ -95,3 +105,4 @@ module.exports = {
 
 /***/ })
 /******/ ]);
+});

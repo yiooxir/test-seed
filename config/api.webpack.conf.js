@@ -11,9 +11,15 @@ module.exports = {
     name: './api_module/api.ts',
   },
   output: {
-    path: path.join(context, 'api_module'),
+    path: helpers.root('build'),
     publicPath: './',
     filename: 'api.build.js',
+    library: 'api',
+    libraryTarget: 'umd',
+    // umdNamedDefine: true,
+  },
+  externals: {
+    vendor_dll: "vendor_dll",
   },
   plugins: [
     new ForkCheckerPlugin(),

@@ -25,7 +25,9 @@ module.exports = webpackMerge(config.data, {
     library: 'ac_[name]',
     libraryTarget: 'var',
   },
-
+  externals: {
+    api: 'api'
+  },
   plugins: [
     new CompressionPlugin({
       regExp: /\.css$|\.html$|\.js$|\.map$/,

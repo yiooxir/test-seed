@@ -2,11 +2,39 @@
 <html>
 
 <head>
+
+</head>
+
+<body>
+<h1>Hello world!</h1>
+<p>Ответ от функции api.test():</p>
+<pre id="pre_api" style=" background: #d6d5d5; height: 50px;"></pre>
+
+<h3>Проверка доступности lodash</h3>
+<p>reduce([1,2,3,4,5], (x,y) => x+y) - ответ:</p>
+<pre id="pre_lodash" style=" background: #d6d5d5; height: 50px;"></pre>
+
+<p style="font-family: monospace;">
+  * main.js файл использует для работы код модулей: vendor.js, api.js но не содержит их код, предполагая, что данные модули доступны из глобальной области
+</p>
+
+<script src="vendor.dll"></script>
+<script src="api.build.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
+
+<!--<!DOCTYPE html>
+<html>
+
+<head>
   <script src="vendor.dll"></script>
+  <script src="api.build.js"></script>
+  <script src="main.js"></script>
 </head>
 
 <body>
 <h1>Hello world!</h1>
 
 </body>
-</html>
+</html>-->
