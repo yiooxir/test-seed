@@ -2,12 +2,10 @@ const webpack = require('webpack');
 const manifest = require('../build/vendor-manifest.json');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const helpers = require('./helpers');
-const context = helpers.root('src');
 
 module.exports = {
-  context,
   entry: {
-    name: './api_module/api.ts',
+    name: './src/api_module/api.ts',
   },
   output: {
     path: helpers.root('build'),
@@ -16,13 +14,17 @@ module.exports = {
     library: 'api',
     libraryTarget: 'umd',
   },
-  externals: {
-    vendor_dll: "vendor_dll",
+  resolve: {
+    alias: {
+      libs: helpers.root('build')
+    }
   },
   plugins: [
     new ForkCheckerPlugin(),
     new webpack.DllReferencePlugin({
-    context,
-    manifest: manifest,
+      context: helpers.root(),
+      manifest: manifest,
+      name: 'libs/vendor_dll.build.js',
+      sourceType: 'commonjs2'
   })]
 };

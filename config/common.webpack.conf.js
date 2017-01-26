@@ -13,7 +13,9 @@ module.exports = {
     resolve: {
       extensions: [ '.ts', '.js', '.scss' ],
       modules: [
+        helpers.root(),
         helpers.root('src'),
+        helpers.root('build'),
         'node_modules'
       ],
       mainFiles: [ 'index' ]
@@ -32,6 +34,7 @@ module.exports = {
           /* for migration on webpack it's no more needed to use loader key. Please, see: https://webpack.js.org/guides/migrating/#module-loaders-is-now-module-rules */
           use: 'tslint-loader',
           exclude: [
+            /build/,
             /node_modules/,
             /\.(spec|e2e)\.ts$/
           ]

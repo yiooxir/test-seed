@@ -23,7 +23,7 @@ module.exports = webpackMerge(config.data, {
   devtool: 'source-map',
   output: {
     library: 'ac_[name]',
-    libraryTarget: 'var',
+    libraryTarget: 'commonjs2',
   },
   externals: {
     api: 'api'
@@ -65,10 +65,5 @@ module.exports = webpackMerge(config.data, {
         context: '/'
       }
     }),
-
-    // new webpack.DllReferencePlugin({
-    //   context: path.join(ROOT_PATH, 'src'),
-    //   manifest: require(path.join(ROOT_PATH, 'build/vendor-manifest.json')),
-    // })
   ]
 });

@@ -4,9 +4,8 @@ const webpack = require('webpack')
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin')
-
+const manifest = require('../build/vendor-manifest.json');
 const helpers = require('./helpers')
-
 const commonConfig = require('./common.webpack.conf.js')
 
 const METADATA = {
@@ -19,7 +18,7 @@ module.exports = {
   metadata: METADATA,
   data: _.extend(commonConfig.data, {
     entry: {
-      'main': './src/main.ts'
+      'main': helpers.root('src', 'main.ts')
     },
     plugins: [
       new ForkCheckerPlugin(),
@@ -29,8 +28,10 @@ module.exports = {
         helpers.root('src') // location of your src
       ),
       new webpack.DllReferencePlugin({
-        context: helpers.root('src'),
-        manifest: helpers.root('build/vendor-manifest.json')
+        context: helpers.root(),
+        manifest: manifest,
+        name: './vendor_dll.build.js',
+        sourceType: 'commonjs2'
       })
     ]
   })
